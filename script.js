@@ -1,3 +1,5 @@
+/*snow*/
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -38,9 +40,7 @@ Particle.prototype.draw = function () {
     ctx.rotate((this.angleY * Math.PI) / 180);
     ctx.globalAlpha = this.opacity;
     const rotateYDeg = this.angleY % 360;
-    if (true) {
-        ctx.scale(this.def, this.defs);
-    }
+    ctx.scale(this.def, this.defs);
     ctx.drawImage(snowflake, -this.size / 2, -this.size / 2, this.size, this.size);
     ctx.scale(1, 1);
     ctx.globalAlpha = 1;
