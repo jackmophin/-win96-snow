@@ -5,15 +5,15 @@ let particles = [];
 const snowflake = new Image();
 snowflake.src = 'https://pngimg.com/uploads/snowflakes/snowflakes_PNG7580.png';
 
-function resize() {
+function resizeCanvas() {
     canvas.width = window.innerWidth / 1.5;
     canvas.height = window.innerHeight / 1.5;
 }
 
 window.addEventListener('resize', resizeCanvas);
-resize();
+resizeCanvas();
 
-function particle() {
+function Particle() {
     this.t = 0;
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * (canvas.height + 800) - 800;
@@ -29,7 +29,7 @@ function particle() {
     this.rnds = Math.random();
 }
 
-particle.prototype.draw = function () {
+Particle.prototype.draw = function () {
     ctx.save();
     this.t += 0.001;
     this.def = (this.rnd * Math.sin(this.t)) * 0.4 + 0.6;
@@ -47,7 +47,7 @@ particle.prototype.draw = function () {
     ctx.restore();
 };
 
-particle.prototype.update = function () {
+Particle.prototype.update = function () {
     if (this.opacity < 0.9) {
         this.opacity += 0.01;
     }
@@ -64,7 +64,7 @@ particle.prototype.update = function () {
 };
 
 function createParticles() {
-    particles.push(new particle());
+    particles.push(new Particle());
 }
 
 function animate() {
